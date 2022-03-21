@@ -1,0 +1,6 @@
+plugins:
+  discourse_email_marketing_enabled:
+    default: false
+  discourse_email_marketing_mailerlite_apikey:
+    default: ''
+    client: false
