@@ -2,3 +2,4 @@ en:
   site_settings:
     discourse_email_marketing_enabled: "Enable Email Marketing plugin."
     discourse_email_marketing_mailerlite_apikey: "Mailerlite API key"
+    discourse_email_marketing_mailerlite_group_id: "Mailerlite Group ID (numeric)"

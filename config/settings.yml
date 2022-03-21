@@ -4,3 +4,6 @@ plugins:
   discourse_email_marketing_mailerlite_apikey:
     default: ''
     client: false
+  discourse_email_marketing_mailerlite_group_id:
+    default: ''
+    client: false

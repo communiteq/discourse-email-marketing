@@ -13,14 +13,24 @@ class DiscourseEmailMarketing
     unless SiteSetting.discourse_email_marketing_mailerlite_apikey.empty?
       case args[:action]
       when "subscribe"
-        uri = URI.parse("https://api.mailerlite.com/api/v2/subscribers")
+        if SiteSetting.discourse_email_marketing_mailerlite_group_id.empty?
+          uri = URI.parse("https://api.mailerlite.com/api/v2/subscribers")
+        else
+          group_id = SiteSetting.discourse_email_marketing_mailerlite_group_id
+          uri = URI.parse("https://api.mailerlite.com/api/v2/groups/#{group_id}/subscribers")
+        end
         request = Net::HTTP::Post.new(uri)
         request.body = JSON.dump({
           "email" => user.email,
           "name"  => user.name
         })
       when "update"
-        uri = URI.parse("https://api.mailerlite.com/api/v2/subscribers")
+        if SiteSetting.discourse_email_marketing_mailerlite_group_id.empty?
+          uri = URI.parse("https://api.mailerlite.com/api/v2/subscribers")
+        else
+          group_id = SiteSetting.discourse_email_marketing_mailerlite_group_id
+          uri = URI.parse("https://api.mailerlite.com/api/v2/groups/#{group_id}/subscribers")
+        end
         request = Net::HTTP::Post.new(uri)
         request.body = JSON.dump({
           "email" => user.email,
